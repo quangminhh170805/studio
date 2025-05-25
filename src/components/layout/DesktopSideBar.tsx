@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -12,8 +13,8 @@ import {
 } from "@/components/ui/tooltip";
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/goals', label: 'Goals & Logs', icon: Target },
+  { href: '/home', label: 'Home', icon: LayoutDashboard },
+  { href: '/goals', label: 'Goals', icon: Target },
   { href: '/premium', label: 'Premium', icon: Sparkles },
   { href: '/settings', label: 'Settings', icon: SettingsIcon },
 ];
@@ -31,7 +32,7 @@ export default function DesktopSideBar() {
         <nav className="flex-grow">
           <ul className="space-y-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href || (item.href === '/dashboard' && pathname === '/');
+              const isActive = pathname === item.href || (item.href === '/home' && pathname === '/');
               return (
                 <li key={item.label}>
                   <Tooltip>

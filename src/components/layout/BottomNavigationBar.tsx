@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -6,7 +7,7 @@ import { LayoutDashboard, Target, Sparkles, Settings as SettingsIcon } from 'luc
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/home', label: 'Home', icon: LayoutDashboard },
   { href: '/goals', label: 'Goals', icon: Target },
   { href: '/premium', label: 'Premium', icon: Sparkles },
   { href: '/settings', label: 'Settings', icon: SettingsIcon },
@@ -19,7 +20,7 @@ export default function BottomNavigationBar() {
     <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-md md:hidden z-50">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || (item.href === '/dashboard' && pathname === '/');
+          const isActive = pathname === item.href || (item.href === '/home' && pathname === '/');
           return (
             <Link href={item.href} key={item.label} legacyBehavior>
               <a

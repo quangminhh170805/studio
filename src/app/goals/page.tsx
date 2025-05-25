@@ -1,3 +1,4 @@
+
 'use client';
 
 import PageWrapper from '@/components/layout/PageWrapper';
@@ -9,7 +10,7 @@ import { Target, ListChecks, History } from 'lucide-react';
 
 export default function GoalsPage() {
   return (
-    <PageWrapper title="Goals &amp; Activity Logs">
+    <PageWrapper title="Goals">
       <Tabs defaultValue="goals" className="space-y-4">
         <TabsList className="grid w-full grid-cols-3 md:w-auto md:inline-flex">
           <TabsTrigger value="goals" className="text-xs sm:text-sm">
