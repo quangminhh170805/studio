@@ -6,9 +6,22 @@ import GoalSetting from '@/components/features/goals/GoalSetting';
 import ActivityLogging from '@/components/features/goals/ActivityLogging';
 import ActivityHistory from '@/components/features/goals/ActivityHistory';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Target, ListChecks, History } from 'lucide-react';
+import { Target, ListChecks, History, Loader2 } from 'lucide-react';
+import { useAppContext } from '@/contexts/AppContext';
 
 export default function GoalsPage() {
+  const { isLoading } = useAppContext();
+
+  if (isLoading) {
+    return (
+      <PageWrapper title="Goals">
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      </PageWrapper>
+    );
+  }
+
   return (
     <PageWrapper title="Goals">
       <Tabs defaultValue="goals" className="space-y-4">

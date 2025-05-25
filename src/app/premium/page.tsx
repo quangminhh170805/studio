@@ -1,3 +1,4 @@
+
 'use client';
 
 import PageWrapper from '@/components/layout/PageWrapper';
@@ -8,13 +9,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAppContext } from '@/contexts/AppContext';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { MessageCircle, Brain, Lightbulb, Lock } from 'lucide-react';
+import { MessageCircle, Brain, Lightbulb, Lock, Loader2, Info } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Info } from 'lucide-react';
+
 
 export default function PremiumPage() {
-  const { appSettings } = useAppContext();
+  const { appSettings, isLoading } = useAppContext();
+
+  if (isLoading) {
+    return (
+      <PageWrapper title="Premium Features">
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      </PageWrapper>
+    );
+  }
 
   if (!appSettings.isPremium) {
     return (
@@ -47,7 +58,7 @@ export default function PremiumPage() {
         <Info className="h-4 w-4 text-primary" />
         <AlertTitle className="text-primary">Get Better Insights!</AlertTitle>
         <AlertDescription>
-          The more activities you log in the 'Goals &amp; Logs' section, the more personalized and accurate your AI assistance and insights will be.
+          The more activities you log in the 'Goals & Logs' section, the more personalized and accurate your AI assistance and insights will be.
         </AlertDescription>
       </Alert>
       <Tabs defaultValue="ai-assistant" className="space-y-4">

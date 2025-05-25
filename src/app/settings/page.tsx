@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useSearchParams } from 'next/navigation';
@@ -8,13 +9,15 @@ import ShareApp from '@/components/features/settings/ShareApp';
 import RateApp from '@/components/features/settings/RateApp';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Bell, Crown, Share2, Star } from 'lucide-react';
+import { Bell, Crown, Share2, Star, Loader2 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useAppContext } from '@/contexts/AppContext';
 
 
 export default function SettingsPage() {
   const searchParams = useSearchParams();
   const defaultTab = searchParams.get('tab') || 'notifications';
+  const { isLoading } = useAppContext();
 
   const settingsSections = [
     { id: 'notifications', title: 'Notifications', icon: Bell, component: <NotificationSettings /> },
@@ -22,6 +25,16 @@ export default function SettingsPage() {
     { id: 'share', title: 'Share Clarity', icon: Share2, component: <ShareApp /> },
     { id: 'rate', title: 'Rate Us', icon: Star, component: <RateApp /> },
   ];
+
+  if (isLoading) {
+    return (
+      <PageWrapper title="Settings">
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+      </PageWrapper>
+    );
+  }
 
   return (
     <PageWrapper title="Settings">
