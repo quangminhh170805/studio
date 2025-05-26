@@ -1,8 +1,10 @@
+
 'use client';
 
 import { useAppContext } from '@/contexts/AppContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Droplet, DollarSign, Clock } from 'lucide-react';
+import { cn } from '@/lib/utils'; // Added import
 
 const StatCard = ({ title, value, unit, icon: Icon, colorClass }: { title: string; value: string | number; unit?: string; icon: React.ElementType, colorClass?: string }) => (
   <Card className="shadow-md hover:shadow-lg transition-shadow">
